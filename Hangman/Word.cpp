@@ -3,6 +3,7 @@
 #include "Word.h"
 #include <cctype>
 #include <iostream>
+#include <algorithm>
 
 Word::Word(const std::string& word) : secret(word), revealed(word.size(), false) {}
 
@@ -10,11 +11,13 @@ bool Word::Guess(char letter) {
     bool found = false;
     letter = std::tolower(letter);
 
-    for (size_t i = 0; i < secret.size(); ++i) {
-        if (std::tolower(secret[i]) == letter) {
+    size_t i = 0;
+    for (char ch : secret) {
+        if (std::tolower(ch) == std::tolower(letter)) {
             revealed[i] = true;
             found = true;
         }
+        ++i;
     }
 
     return found;
@@ -34,8 +37,5 @@ void Word::Display() {
 }
 
 bool Word::IsFullyRevealed() {
-    for (bool r : revealed) {
-        if (!r) return false;
-    }
-    return true;
+    return std::all_of(revealed.begin(), revealed.end(), [](bool r) { return r; });
 }

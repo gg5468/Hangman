@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../Hangman/Game.h"
+#include <fstream>
 #define TESTING
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace Hangman;
@@ -28,5 +29,13 @@ namespace HangmanTests
 
             Assert::AreEqual(std::string(""), word, L"Expected empty string when file is empty.");
         }
+
+        TEST_METHOD(OpenFile_ReturnsClosedStream_WhenFileDoesNotExist)
+        {
+            Game game;
+            auto file = game.OpenFile("missing.txt");
+            Assert::IsFalse(file.is_open(), L"Expected file stream to be closed.");
+        }
+
     };
 }

@@ -3,7 +3,6 @@
 #include "Game.h"
 #include "Word.h"
 
-
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -14,8 +13,6 @@ using namespace std;
 namespace Hangman {
     Game::Game()
     {
-        player = Player();
-        figure = Figure();
     }
 
     void Game::Run()
@@ -37,30 +34,35 @@ namespace Hangman {
             if (!res) {
                 figure.AddBodyPart();
             }
-            system("cls");
+            std::cout << "\033[2J\033[1;1H"; //clear console
         }
         std::cout << "You win! The word was: " << word.GetSecret() << std::endl;
     }
 
-    std::string Game::GetWord(std::string filename) {
-
+    std::ifstream Game::OpenFile(const std::string& filename) {
         std::ifstream file(filename);
-        if (!file.is_open()) {
-            std::cerr << "Error: Could not open file " << filename << '\n';
-            return "";
-        }
+        return file;
+    }
 
+    std::vector<std::string> Game::getLines(std::ifstream& file) {
         std::vector<std::string> lines;
         std::string line;
-
         while (std::getline(file, line)) {
             lines.push_back(line);
         }
 
-        file.close();
+        return lines;
+	}
 
+    std::string Game::GetWord(std::string filename) {
+
+        std::ifstream file = OpenFile(filename);
+        if (!file.is_open()) {
+            return "";
+        }
+
+        std::vector<std::string> lines = getLines(file);
         if (lines.empty()) {
-            std::cerr << "Error: File is empty.\n";
             return "";
         }
 
