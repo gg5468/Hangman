@@ -174,7 +174,6 @@
     <ClCompile Include="..\Hangman\Word.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="GameTest.cpp" />
     <ClCompile Include="PlayerTest.cpp" />
     <ClCompile Include="WordTest.cpp" />
   </ItemGroup>

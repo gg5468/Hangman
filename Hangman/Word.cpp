@@ -3,12 +3,10 @@
 #include <iostream>
 #include <algorithm>
 
-Word::Word(const std::string& word) {
-    secret = word;
-    std::transform(secret.begin(), secret.end(), secret.begin(),
-        [](unsigned char c) { return std::tolower(c); });
 
-    revealed = std::vector<bool>(secret.size(), false);
+Word::Word(const std::string& word) : secret(word), revealed(word.size()) {
+    std::transform(secret.begin(), secret.end(), secret.begin(),
+        [](auto c) { return std::tolower(c); });
 }
 
 bool Word::Guess(char letter) {

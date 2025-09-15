@@ -30,17 +30,14 @@ namespace UnitTest1
         TEST_METHOD(CaseInsensitiveGuess_Works)
         {
             Word word("Apple");
-            bool resultLower = word.Guess('a');
-            bool resultUpper = word.Guess('P');
-            Assert::IsTrue(resultLower);
-            Assert::IsTrue(resultUpper);
+            Assert::IsTrue(word.Guess('a'));
+            Assert::IsTrue(word.Guess('P'));
         }
 
         TEST_METHOD(MultipleOccurrences_AreRevealed)
         {
             Word word("banana");
-            bool result = word.Guess('a');
-            Assert::IsTrue(result);
+            Assert::IsTrue(word.Guess('a'));
             Assert::IsFalse(word.IsFullyRevealed());
         }
 
