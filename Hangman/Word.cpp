@@ -1,11 +1,15 @@
-#include "pch.h"
-
 #include "Word.h"
 #include <cctype>
 #include <iostream>
 #include <algorithm>
 
-Word::Word(const std::string& word) : secret(word), revealed(word.size(), false) {}
+Word::Word(const std::string& word) {
+    secret = word;
+    std::transform(secret.begin(), secret.end(), secret.begin(),
+        [](unsigned char c) { return std::tolower(c); });
+
+    revealed = std::vector<bool>(secret.size(), false);
+}
 
 bool Word::Guess(char letter) {
     bool found = false;
@@ -13,7 +17,7 @@ bool Word::Guess(char letter) {
 
     size_t i = 0;
     for (char ch : secret) {
-        if (std::tolower(ch) == std::tolower(letter)) {
+        if (ch == letter) {
             revealed[i] = true;
             found = true;
         }

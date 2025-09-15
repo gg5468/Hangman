@@ -10,7 +10,6 @@ namespace Hangman {
 		void Run();
 
 		std::string GetWord(std::string filename);
-		std::ifstream OpenFile(const std::string& filename);
 	private:
 		Player player = Player();
 		Figure figure = Figure();

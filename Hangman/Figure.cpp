@@ -1,5 +1,3 @@
-#include "pch.h"
-
 #include "Figure.h"
 #include <iostream>
 #include <vector>

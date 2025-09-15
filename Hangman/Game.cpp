@@ -1,5 +1,3 @@
-#include "pch.h"
-
 #include "Game.h"
 #include "Word.h"
 
@@ -39,11 +37,6 @@ namespace Hangman {
         std::cout << "You win! The word was: " << word.GetSecret() << std::endl;
     }
 
-    std::ifstream Game::OpenFile(const std::string& filename) {
-        std::ifstream file(filename);
-        return file;
-    }
-
     std::vector<std::string> Game::getLines(std::ifstream& file) {
         std::vector<std::string> lines;
         std::string line;
@@ -56,7 +49,7 @@ namespace Hangman {
 
     std::string Game::GetWord(std::string filename) {
 
-        std::ifstream file = OpenFile(filename);
+        std::ifstream file(filename);
         if (!file.is_open()) {
             return "";
         }

@@ -1,4 +1,5 @@
 #include "pch.h"
+
 #include "../Hangman/Word.h"
 #include <CppUnitTest.h>
 #include <sstream>
@@ -15,16 +16,14 @@ namespace UnitTest1
         TEST_METHOD(CorrectGuess_RevealsLetter)
         {
             Word word("test");
-            bool result = word.Guess('t');
-            Assert::IsTrue(result);
-            Assert::IsTrue(word.IsFullyRevealed() == false);
+            Assert::IsTrue(word.Guess('t'));
+            Assert::IsFalse(word.IsFullyRevealed());
         }
 
         TEST_METHOD(IncorrectGuess_ReturnsFalse)
         {
             Word word("hello");
-            bool result = word.Guess('z');
-            Assert::IsFalse(result);
+            Assert::IsFalse(word.Guess('z'));
             Assert::IsFalse(word.IsFullyRevealed());
         }
 
