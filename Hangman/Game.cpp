@@ -9,11 +9,8 @@
 using namespace std;
 
 namespace Hangman {
-    Game::Game()
-    {
-    }
 
-    void Game::Run()
+    void const Game::Run()
     {
         Word word(GetWord("Wordlist.txt"));
 
@@ -37,7 +34,7 @@ namespace Hangman {
         std::cout << "You win! The word was: " << word.GetSecret() << std::endl;
     }
 
-    std::vector<std::string> Game::getLines(std::ifstream& file) {
+    std::vector<std::string> const Game::getLines(std::ifstream& file) {
         std::vector<std::string> lines;
         std::string line;
         while (std::getline(file, line)) {
@@ -47,7 +44,7 @@ namespace Hangman {
         return lines;
 	}
 
-    std::string Game::GetWord(std::string filename) {
+    std::string const Game::GetWord(std::string filename) {
 
         std::ifstream file(filename);
         if (!file.is_open()) {

@@ -1,6 +1,5 @@
-#include "pch.h"
 
-#include "../Hangman/Word.h"
+#include "../Hangman/Word.cpp"
 #include <CppUnitTest.h>
 #include <sstream>
 

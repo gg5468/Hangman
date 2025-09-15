@@ -1,6 +1,4 @@
-#include "pch.h"
-
-#include "../Hangman/Player.h"
+#include "../Hangman/Player.cpp"
 #include <CppUnitTest.h>
 #include <sstream>
 
@@ -16,32 +14,28 @@ namespace UnitTest1
         {
             std::istringstream input("a\n");
             Player player;
-            char result = player.GetUserInput(input);
-            Assert::AreEqual('a', result);
+            Assert::AreEqual('a', player.GetUserInput(input));
         }
 
         TEST_METHOD(InvalidThenValidInput_ReturnsValidCharacter)
         {
             std::istringstream input("1\nb\n");
             Player player;
-            char result = player.GetUserInput(input);
-            Assert::AreEqual('b', result);
+            Assert::AreEqual('b', player.GetUserInput(input));
         }
 
         TEST_METHOD(UppercaseInput_ReturnsUppercaseCharacter)
         {
             std::istringstream input("Z\n");
             Player player;
-            char result = player.GetUserInput(input);
-            Assert::AreEqual('Z', result);
+            Assert::AreEqual('Z', player.GetUserInput(input));
         }
 
         TEST_METHOD(MultipleCharactersInput_ThenValidInput_ReturnsValidCharacter)
         {
             std::istringstream input("abc\nx\n");
             Player player;
-            char result = player.GetUserInput(input);
-            Assert::AreEqual('x', result);
+            Assert::AreEqual('x', player.GetUserInput(input));
         }
     };
 }

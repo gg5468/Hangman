@@ -3,9 +3,9 @@
 class Figure {
 public:
     Figure();
-    void AddBodyPart();
-    void Display();
-	int GetBodyParts() { return body_parts; };
+    void const AddBodyPart();
+    void const Display();
+	int const GetBodyParts() { return body_parts; };
 private:
     int body_parts;
 };

@@ -9,7 +9,7 @@ Word::Word(const std::string& word) : secret(word), revealed(word.size()) {
         [](auto c) { return std::tolower(c); });
 }
 
-bool Word::Guess(char letter) {
+bool const Word::Guess(char letter) {
     bool found = false;
     letter = std::tolower(letter);
 
@@ -25,7 +25,7 @@ bool Word::Guess(char letter) {
     return found;
 }
 
-void Word::Display() {
+void const Word::Display() {
     for (size_t i = 0; i < secret.size(); ++i) {
         if (revealed[i]) {
             std::cout << secret[i];
@@ -38,6 +38,6 @@ void Word::Display() {
     std::cout << std::endl << std::endl;
 }
 
-bool Word::IsFullyRevealed() {
+bool const Word::IsFullyRevealed() {
     return std::all_of(revealed.begin(), revealed.end(), [](bool r) { return r; });
 }

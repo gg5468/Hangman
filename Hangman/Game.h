@@ -6,16 +6,16 @@
 namespace Hangman {
 	class Game {
 	public:
-		Game();
-		void Run();
+		Game() {};
+		void const Run();
 
-		std::string GetWord(std::string filename);
+		std::string const GetWord(std::string filename);
 	private:
-		Player player = Player();
-		Figure figure = Figure();
+		Player player;
+		Figure figure;
 		
 		
-		std::vector<std::string> getLines(std::ifstream& file);
+		std::vector<std::string> const getLines(std::ifstream& file);
 	};
 }
 

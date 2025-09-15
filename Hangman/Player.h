@@ -4,6 +4,6 @@
 class Player
 {
 public:
-	char GetUserInput(std::istream& inputStream);
+	char const GetUserInput(std::istream& inputStream);
 };
 

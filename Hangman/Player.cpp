@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-char Player::GetUserInput(std::istream& inputStream)
+char const Player::GetUserInput(std::istream& inputStream)
 {
     std::string input;
 
