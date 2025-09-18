@@ -6,13 +6,13 @@ Figure::Figure(){
     body_parts = 0;
 }
 
-void const Figure::AddBodyPart() {
+void Figure::AddBodyPart() {
     if (body_parts < 6) {
         ++body_parts;
     }
 }
 
-void const Figure::Display() {
+void Figure::Display() const {
     std::vector<std::string> hangman = {
         "  _______     ",
         " |/      |    ",

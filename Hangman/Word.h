@@ -9,9 +9,9 @@ private:
 
 public:
     Word(const std::string& word);
-    bool const Guess(char letter);
-    void const Display();
-    bool const IsFullyRevealed();
-    std::string const GetSecret() { return secret; };
+    bool Guess(char letter);
+    void Display() const;
+    bool IsFullyRevealed() const ;
+    std::string GetSecret() const { return secret; } ;
 };
 
